@@ -1,4 +1,4 @@
-# TO RUN
+# How to run
 
 Make sure you're in this directory.
 ```
