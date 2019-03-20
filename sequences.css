@@ -21,12 +21,13 @@
 
   #main {
     float: left;
-    width: 90%;
+    width: 80%;
   }
   
   #sidebar {
+    position: relative;
     float: right;
-    width: 10%;
+    width: 20%;
   }
   
   #sequence {
@@ -44,33 +45,24 @@
   }
   
   #chart {
-    position: relative;
+    position: absolute;
+    text-align: center;
   }
   
   #chart path {
     stroke: #fff;
   }
   
-  /* #explanation {
-    position: relative;
-    top: 260px;
-    left: 305px;
-    width: 140px;
-    text-align: center;
-    color: #666;
-    z-index: -1;
-  } */
-
   #explanation {
-    position: relative;
-    top: 260px;
-    left: 305px;
-    width: 140px;
+    transform: translate(375px,325px);
+    position: absolute;
+    width: 150px;
     text-align: center;
     color: #666;
     z-index: -1;
   }
+
   
   #percentage {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }

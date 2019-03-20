@@ -1,6 +1,6 @@
 // Dimensions of sunburst.
 var width = 900;
-var height = 600;
+var height = 700;
 var radius = Math.min(width, height) / 2;
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
@@ -25,12 +25,22 @@ var colors = {
 // Total size of all segments; we set this later, after loading the data.
 var totalSize = 0; 
 
-var vis = d3.select("#chart").append("svg:svg")
-    .attr("width", width)
-    .attr("height", height)
-    .append("svg:g")
-    .attr("id", "container")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var vis_without_svgg = d3.select("#chart").append("svg:svg")
+.attr("id", "svg")
+.attr("width", width)
+.attr("height", height)
+
+var vis = vis_without_svgg
+.append("svg:g")
+.attr("id", "container")
+.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var text_explanation = d3.select("#chart")
+  .insert("div",":first-child").attr("id", "explanation")
+  .style("color", "purple")
+  .append("span").attr("id", "percentage")
+
 
 var partition = d3.partition()
     .size([2 * Math.PI, radius * radius]);
@@ -102,10 +112,10 @@ function mouseover(d) {
   }
 
   d3.select("#percentage")
-      .text(percentageString);
+      .text(percentageString + " of assets have gone through this flow.");
 
   d3.select("#explanation")
-      .style("visibility", "");
+      .style("visibility", "")
 
   var sequenceArray = d.ancestors().reverse();
   sequenceArray.shift(); // remove root node from the array
